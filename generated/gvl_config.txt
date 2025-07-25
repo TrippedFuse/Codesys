@@ -1,0 +1,69 @@
+
+//=========================================================
+// +++ Press +++
+//=========================================================
+    utPress : ST_CONF_PRESS := (
+                    utFeeder := 
+                        (sSensBasPos    := 'B1.0',
+                        sSensWrkPos     := 'B1.2', 
+                        sActorBasPos    := 'Y1.1', 
+                        sActorWrkPos    := 'Y1.2', 
+                        sMoveToBasPos   := 'toBas', 
+                        sMoveToWrkPos   := 'toWrk', 
+                        sName           := 'Feeder'),
+                    utPress := 
+                        (sSensBasPos    := 'B1.0',
+                        sSensWrkPos     := 'B1.2', 
+                        sActorBasPos    := 'Y1.1', 
+                        sActorWrkPos    := 'Y1.2', 
+                        sMoveToBasPos   := 'toBas', 
+                        sMoveToWrkPos   := 'toWrk', 
+                        sName           := 'Press')); 
+
+//=========================================================
+// +++ Robot +++
+//=========================================================
+    utRobot : ST_CONF_ROBOT := (
+                    utLifter := 
+                        (sSensBasPos    := 'B1.0',
+                        sSensWrkPos     := 'B1.2', 
+                        sActorBasPos    := 'Y1.1', 
+                        sActorWrkPos    := 'Y1.2', 
+                        sMoveToBasPos   := 'toBas', 
+                        sMoveToWrkPos   := 'toWrk', 
+                        sName           := 'Lifter'),
+                    utTurner := 
+                        (sSensBasPos    := 'B1.0',
+                        sSensWrkPos     := 'B1.2', 
+                        sActorBasPos    := 'Y1.1', 
+                        sActorWrkPos    := 'Y1.2', 
+                        sMoveToBasPos   := 'toBas', 
+                        sMoveToWrkPos   := 'toWrk', 
+                        sName           := 'Turner'),
+                    utGripper := 
+                        (sSensBasPos    := 'B1.0',
+                        sSensWrkPos     := 'B1.2', 
+                        sActorBasPos    := 'Y1.1', 
+                        sActorWrkPos    := 'Y1.2', 
+                        sMoveToBasPos   := 'toBas', 
+                        sMoveToWrkPos   := 'toWrk', 
+                        sName           := 'Gripper')); 
+
+//=========================================================
+// +++ InletTest +++
+//=========================================================
+    utInletTest : ST_CONF_INLET_TEST := (
+                    utInletTesterMetall := 
+                        (sName           := 'Inlet Tester Metall'),
+                    utInletTesterKunststoff := 
+                        (sName           := 'Inlet Tester Kunststoff')); 
+
+//=========================================================
+// +++ EmptyModule +++
+//=========================================================
+    utEmptyModule : ST_CONF_EMPTY_MODULE := (
+        _oJoaFU(
+            xEnable                 := xEnable,
+		    utConfig				:= utConfig.utJoaFU,
+		    utVisItf				:= utVisItf.utJoaFU);
+            ); 
