@@ -1,0 +1,99 @@
+{
+  "project_config": {
+    "version": "SP21 P1",
+    "author": "MD"
+  },
+  "machine_config": {
+    "modules": [
+      { "name" : "Press",
+        "comment" : "yes",
+        "is_sqc" : true,
+        "units" : [
+            {   "type": "FB_DUO_ACTOR",
+                "name": "Feeder"
+            },
+            {   "type": "FB_DUO_ACTOR",
+                "name": "Press"
+            }
+            ],
+        "sqc" : [
+          {   "name" : "Auto",
+              "comment" : "Automatik Ablauf",
+              "steps" : [
+                { "name" : "idle",
+                  "comment" : "leerlauf"
+                } 
+              ]
+            },
+          {   "name" : "Homing",
+              "comment" : "Grundstellungsfahrt",
+              "steps" : [
+                { "name" : "idle",
+                  "comment" : "leerlauf"
+                },
+                { "name" : "PRESS_UP",
+                  "comment" : "Presse Hoch"
+                },
+                { "name" : "FEEDER_OUT",
+                  "comment" : "zufuhr Raus"
+                },
+                { "name" : "DONE",
+                  "comment" : "Fertig"
+                } 
+              ]
+            },
+          {   "name" : "Pressing",
+              "comment" : "In Arbeitsstellung",
+              "steps" : [
+                { "name" : "idle",
+                  "comment" : "leerlauf"
+                } 
+              ]
+            }
+
+        ]
+    },
+      { "name" : "Robot",
+        "comment" : "yes",
+        "is_sqc" : true,
+        "units" : [
+            {   "type": "FB_DUO_ACTOR",
+                "name": "Lifter"
+            },
+            {   "type": "FB_DUO_ACTOR",
+                "name": "Turner"
+            },
+            {   "type": "FB_DUO_ACTOR",
+                "name": "Gripper"
+            }
+            ],
+        "sqc" : []
+    },
+      { "name" : "InletTest",
+        "comment" : "yes",
+        "is_sqc" : false,
+        "units" : [
+            {   "type": "FB_INPUT",
+                "name": "InletTesterMetall"
+            },
+            {   "type": "FB_INPUT",
+                "name": "InletTesterKunststoff"
+            }
+            ],
+        "sqc" : []
+    },
+      { "name" : "EmptyModule",
+        "comment" : "yes",
+        "is_sqc" : false,
+        "units" : [
+            {   "type": "FB_MOTOR",
+                "name": "JoaFU"
+            }
+          ],
+        "sqc" : []
+    }
+    
+    ]
+  }
+}
+
