@@ -13,6 +13,12 @@ class unit:
         (sName           := '{helper.createDisplayName(self._name)}')"""
         return confStr
 
+    def getIO(self):
+        IOstr = f"""
+        none
+        """
+        return IOstr
+
     def getInstanceCall(self):
         instanceStr = f"""
         {helper.createDeklarationName('_o', self._name)}(
@@ -39,6 +45,13 @@ class FB_DUO_ACTOR(unit):
                         sMoveToWrkPos   := 'toWrk', 
                         sName           := '{helper.createDisplayName(self._name)}')"""
         return confStr
+
+    def getIO(self):
+        """ gen io data in gvl_globalIO """
+        IOstr = f"""
+        none
+        """
+        return IOstr
 
     def getInstanceCall(self):
         """ generate the instance call for the duoactor """
