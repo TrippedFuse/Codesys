@@ -1,0 +1,18 @@
+
+        // FIRST THE CONFIG STRUCTs
+    TYPE ST_CONF_EMPTY_MODULE :
+    STRUCT
+        //NAME              TYPE                INIT                                COMMENT
+        sName               : STRING(10);
+          utJoaFU  : ST_CONF_MOTOR;
+
+    END_STRUCT
+    END_TYPE
+        // THEN THE VIS STRUCTs
+    TYPE ST_VIS_EMPTY_MODULE :
+    STRUCT
+        //NAME              TYPE                INIT                                COMMENT
+          utJoaFU  : ST_VIS_MOTOR;
+
+    END_STRUCT
+    END_TYPE

@@ -1,0 +1,42 @@
+
+        // FIRST THE CONFIG STRUCTs
+    TYPE ST_CONF_PRESS :
+    STRUCT
+        //NAME              TYPE                INIT                                COMMENT
+        sName               : STRING(10);
+          utFeeder  : ST_CONF_DUO_ACTOR;
+      utPress  : ST_CONF_DUO_ACTOR;
+
+    END_STRUCT
+    END_TYPE
+        // THEN THE VIS STRUCTs
+    TYPE ST_VIS_PRESS :
+    STRUCT
+        //NAME              TYPE                INIT                                COMMENT
+          utFeeder  : ST_VIS_DUO_ACTOR;
+      utPress  : ST_VIS_DUO_ACTOR;
+
+    END_STRUCT
+    END_TYPE// THEN THE ENUMS
+TYPE EN_PRESS_AUTO_STATE :
+(
+IDLE,     // leerlauf
+);
+END_TYPE
+
+ TYPE EN_PRESS_HOMING_STATE :
+(
+IDLE,     // leerlauf
+PRESS_UP,     // Presse Hoch
+FEEDER_OUT,     // zufuhr Raus
+DONE,     // Fertig
+);
+END_TYPE
+
+ TYPE EN_PRESS_PRESSING_STATE :
+(
+IDLE,     // leerlauf
+);
+END_TYPE
+
+ 

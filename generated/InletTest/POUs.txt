@@ -1,0 +1,79 @@
+
+// =============================
+// Firmware Version:    
+// Codesys Version:     
+// Release Date:        2025-07-26
+// Author:              MDrost 
+// Function:              
+// =============================
+FUNCTION_BLOCK FB_INLETTEST EXTENDS FB_UNIT_BASE IMPLEMENTS ITF_UNIT_BASE
+VAR_INPUT
+    //NAME              TYPE                INIT                                COMMENT
+    xAck                : bool;
+    utInletTest : ST_CONF_INLET_TEST;
+END_VAR
+
+    VAR_IN_OUT
+        //NAME              TYPE                INIT                                COMMENT
+        utVisItf : ST_VIS_INLET_TEST;
+    END_VAR
+
+    VAR
+        //NAME              TYPE                INIT                                COMMENT
+        // locals 
+    
+     // units
+      _oInletTesterMetall : FB_INPUT   //
+      _oInletTesterKunststoff : FB_INPUT   //
+
+END_VAR
+        ///////////Ab hier kommt der Programm teil
+
+
+//=========================================================
+// +++ INIT +++
+
+//=========================================================
+
+//=========================================================
+// +++ FLAGS & TIMER +++
+
+//=========================================================
+
+//=========================================================
+// +++ INPUTS +++
+	
+//=========================================================
+
+//=========================================================
+// +++ PROGRAMM +++
+	
+//=========================================================
+
+//=========================================================
+// +++ UNITS  INSTANCES +++
+
+        _oInletTesterMetall(
+            xEnable                 := xEnable,
+		    utVisItf				:= utVisItf.utInletTesterMetall);
+            
+        _oInletTesterKunststoff(
+            xEnable                 := xEnable,
+		    utVisItf				:= utVisItf.utInletTesterKunststoff);
+            
+//=========================================================
+
+//=========================================================
+// +++ OUTPUTS +++
+
+//=========================================================
+
+//=========================================================
+// +++ VISU +++
+
+//=========================================================
+
+//=========================================================
+// +++ ALARMS +++
+
+//=========================================================

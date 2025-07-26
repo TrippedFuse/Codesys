@@ -9,10 +9,16 @@ from datetime import date
 import unit_modules as units
 import helper as helper
 
+
+
 today = date.today()
 
 # MAIN
 if __name__ == "__main__":
+
+    #config paths 
+    genFileFolder   = 'generated'
+    pathSign        = '/'   # / for linux \ for Windows
 
     # --------------------------------------------------------------------------- #
     # Open and load the Json Configuration File
@@ -21,9 +27,9 @@ if __name__ == "__main__":
     configData = json.load(f)
 
     # clear all exisiting content in generated folder
-    shutil.rmtree('generated')
-    if not os.path.exists('generated'):
-        os.makedirs('generated')
+    shutil.rmtree(genFileFolder)
+    if not os.path.exists(genFileFolder):
+        os.makedirs(genFileFolder)
 
     configString    = ""
     visuString      = ""
@@ -57,9 +63,9 @@ if __name__ == "__main__":
 
         configString += "); \n"
 
-    configfile = open("generated\gvl_config.txt", "x")
+    configfile = open(genFileFolder+pathSign+"gvl_config.txt", "x")
     configfile.write(configString)    
-    visufile = open("generated\gvl_visu.txt", "x")
+    visufile = open(genFileFolder+pathSign+"gvl_visu.txt", "x")
     visufile.write(visuString)
 
 
@@ -68,7 +74,7 @@ if __name__ == "__main__":
     # --------------------------------------------------------------------------- #
     for i in range(0, len(configData["machine_config"]["modules"])):
         module       = configData["machine_config"]["modules"][i]
-        modulePath   = f"""generated\{module["name"]}"""
+        modulePath   = f"""{genFileFolder}{pathSign}{module["name"]}"""
 
         if not os.path.exists(modulePath):
             os.makedirs(modulePath)
@@ -122,7 +128,7 @@ if __name__ == "__main__":
 
         pouString += helper.POU_FRAME_END
 
-        modulfile = open(modulePath+"\POUs.txt", "x")
+        modulfile = open(modulePath+pathSign+"POUs.txt", "x")
         modulfile.write(pouString)
 
     # --------------------------------------------------------------------------- #
@@ -130,7 +136,7 @@ if __name__ == "__main__":
     # --------------------------------------------------------------------------- #
     for i in range(0, len(configData["machine_config"]["modules"])):
         module       = configData["machine_config"]["modules"][i]
-        modulePath   = f"""generated\{module["name"]}"""
+        modulePath   = f"""{genFileFolder}{pathSign}{module["name"]}"""
 
         if not os.path.exists(modulePath):
             os.makedirs(modulePath)
@@ -179,7 +185,7 @@ if __name__ == "__main__":
 
                 dutString += ");\nEND_TYPE\n\n "
 
-        modulfile = open(modulePath+"\DUTs.txt", "x")
+        modulfile = open(modulePath+pathSign+"DUTs.txt", "x")
         modulfile.write(dutString)
 
     # --------------------------------------------------------------------------- #
@@ -187,7 +193,7 @@ if __name__ == "__main__":
     # --------------------------------------------------------------------------- #
     for i in range(0, len(configData["machine_config"]["modules"])):
         module       = configData["machine_config"]["modules"][i]
-        modulePath   = f"""generated\{module["name"]}"""
+        modulePath   = f"""{genFileFolder}{pathSign}{module["name"]}"""
 
         if not os.path.exists(modulePath):
             os.makedirs(modulePath)
@@ -205,7 +211,7 @@ if __name__ == "__main__":
                     """
                 methodString += "END_CASE\n\n"
 
-        modulfile = open(modulePath+"\Methods.txt", "x")
+        modulfile = open(modulePath+pathSign+"Methods.txt", "x")
         modulfile.write(methodString)
 
 

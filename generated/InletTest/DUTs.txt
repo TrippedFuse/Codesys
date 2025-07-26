@@ -1,0 +1,20 @@
+
+        // FIRST THE CONFIG STRUCTs
+    TYPE ST_CONF_INLET_TEST :
+    STRUCT
+        //NAME              TYPE                INIT                                COMMENT
+        sName               : STRING(10);
+          utInletTesterMetall  : ST_CONF_INPUT;
+      utInletTesterKunststoff  : ST_CONF_INPUT;
+
+    END_STRUCT
+    END_TYPE
+        // THEN THE VIS STRUCTs
+    TYPE ST_VIS_INLET_TEST :
+    STRUCT
+        //NAME              TYPE                INIT                                COMMENT
+          utInletTesterMetall  : ST_VIS_INPUT;
+      utInletTesterKunststoff  : ST_VIS_INPUT;
+
+    END_STRUCT
+    END_TYPE

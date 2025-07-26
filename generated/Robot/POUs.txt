@@ -1,0 +1,113 @@
+
+// =============================
+// Firmware Version:    
+// Codesys Version:     
+// Release Date:        2025-07-26
+// Author:              MDrost 
+// Function:              
+// =============================
+FUNCTION_BLOCK FB_SQC_ROBOT EXTENDS FB_UNIT_BASE IMPLEMENTS ITF_UNIT_BASE
+VAR_INPUT
+    //NAME              TYPE                INIT                                COMMENT
+    xAck                : bool;
+    utRobot : ST_CONF_ROBOT;
+END_VAR
+
+    VAR_IN_OUT
+        //NAME              TYPE                INIT                                COMMENT
+        utVisItf : ST_VIS_ROBOT;
+    END_VAR
+
+    VAR
+        //NAME              TYPE                INIT                                COMMENT
+        // locals 
+    
+        // sequence handler
+    
+     // units
+      _oLifter : FB_DUO_ACTOR   //
+      _oTurner : FB_DUO_ACTOR   //
+      _oGripper : FB_DUO_ACTOR   //
+
+END_VAR
+        ///////////Ab hier kommt der Programm teil
+
+
+//=========================================================
+// +++ INIT +++
+
+//=========================================================
+
+//=========================================================
+// +++ FLAGS & TIMER +++
+
+//=========================================================
+
+//=========================================================
+// +++ INPUTS +++
+	
+//=========================================================
+
+//=========================================================
+// +++ PROGRAMM +++
+	
+//=========================================================
+
+//=========================================================
+// +++ UNITS  INSTANCES +++
+
+        _oLifter(
+            xEnable                 := xEnable,
+            xManual					:= NOT (Command > 0) AND (ExecState = EN_EXEC_STATE.MANUAL), 
+		    utConfig				:= utConfig.utLifter, 
+		    xAck					:= xAck, 
+		    xSensIsInBasPos			:= , 
+		    xSensIsInWrkPos			:= , 
+		    xOnManReleaseToBasPos	:= TRUE, 
+		    xOnManReleaseToWrkPos	:= TRUE, 
+		    xGoToBasPos				=> , 
+		    xGoToWrkPos				=> , 
+		    utVisItf				:= utVisItf.utLifter);
+            
+        _oTurner(
+            xEnable                 := xEnable,
+            xManual					:= NOT (Command > 0) AND (ExecState = EN_EXEC_STATE.MANUAL), 
+		    utConfig				:= utConfig.utTurner, 
+		    xAck					:= xAck, 
+		    xSensIsInBasPos			:= , 
+		    xSensIsInWrkPos			:= , 
+		    xOnManReleaseToBasPos	:= TRUE, 
+		    xOnManReleaseToWrkPos	:= TRUE, 
+		    xGoToBasPos				=> , 
+		    xGoToWrkPos				=> , 
+		    utVisItf				:= utVisItf.utTurner);
+            
+        _oGripper(
+            xEnable                 := xEnable,
+            xManual					:= NOT (Command > 0) AND (ExecState = EN_EXEC_STATE.MANUAL), 
+		    utConfig				:= utConfig.utGripper, 
+		    xAck					:= xAck, 
+		    xSensIsInBasPos			:= , 
+		    xSensIsInWrkPos			:= , 
+		    xOnManReleaseToBasPos	:= TRUE, 
+		    xOnManReleaseToWrkPos	:= TRUE, 
+		    xGoToBasPos				=> , 
+		    xGoToWrkPos				=> , 
+		    utVisItf				:= utVisItf.utGripper);
+            
+//=========================================================
+
+//=========================================================
+// +++ OUTPUTS +++
+
+//=========================================================
+
+//=========================================================
+// +++ VISU +++
+
+//=========================================================
+
+//=========================================================
+// +++ ALARMS +++
+
+//=========================================================

@@ -1,0 +1,60 @@
+// NEUE SCHRITTKETTE +++++++++++
+    CASE _oSqcAuto OF
+                   
+// +++ leerlauf +++
+EN_PRESS_AUTO_STATE.IDLE:
+// your Code here
+    IF FALSE THEN
+        _oSqcAuto.nextState(EN_PRESS_AUTO_STATE.);
+    END_IF
+    
+                    END_CASE
+
+// NEUE SCHRITTKETTE +++++++++++
+    CASE _oSqcHoming OF
+                   
+// +++ leerlauf +++
+EN_PRESS_HOMING_STATE.IDLE:
+// your Code here
+    IF FALSE THEN
+        _oSqcHoming.nextState(EN_PRESS_HOMING_STATE.);
+    END_IF
+    
+                       
+// +++ Presse Hoch +++
+EN_PRESS_HOMING_STATE.PRESS_UP:
+// your Code here
+    IF FALSE THEN
+        _oSqcHoming.nextState(EN_PRESS_HOMING_STATE.);
+    END_IF
+    
+                       
+// +++ zufuhr Raus +++
+EN_PRESS_HOMING_STATE.FEEDER_OUT:
+// your Code here
+    IF FALSE THEN
+        _oSqcHoming.nextState(EN_PRESS_HOMING_STATE.);
+    END_IF
+    
+                       
+// +++ Fertig +++
+EN_PRESS_HOMING_STATE.DONE:
+// your Code here
+    IF FALSE THEN
+        _oSqcHoming.nextState(EN_PRESS_HOMING_STATE.);
+    END_IF
+    
+                    END_CASE
+
+// NEUE SCHRITTKETTE +++++++++++
+    CASE _oSqcPressing OF
+                   
+// +++ leerlauf +++
+EN_PRESS_PRESSING_STATE.IDLE:
+// your Code here
+    IF FALSE THEN
+        _oSqcPressing.nextState(EN_PRESS_PRESSING_STATE.);
+    END_IF
+    
+                    END_CASE
+

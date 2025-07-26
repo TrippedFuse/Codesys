@@ -1,0 +1,102 @@
+
+// =============================
+// Firmware Version:    
+// Codesys Version:     
+// Release Date:        2025-07-26
+// Author:              MDrost 
+// Function:              
+// =============================
+FUNCTION_BLOCK FB_SQC_PRESS EXTENDS FB_UNIT_BASE IMPLEMENTS ITF_UNIT_BASE
+VAR_INPUT
+    //NAME              TYPE                INIT                                COMMENT
+    xAck                : bool;
+    utPress : ST_CONF_PRESS;
+END_VAR
+
+    VAR_IN_OUT
+        //NAME              TYPE                INIT                                COMMENT
+        utVisItf : ST_VIS_PRESS;
+    END_VAR
+
+    VAR
+        //NAME              TYPE                INIT                                COMMENT
+        // locals 
+    
+        // sequence handler
+          _oSqcAuto : FB_SQC_HANDLER;    //Automatik Ablauf
+      _oSqcHoming : FB_SQC_HANDLER;    //Grundstellungsfahrt
+      _oSqcPressing : FB_SQC_HANDLER;    //In Arbeitsstellung
+
+     // units
+      _oFeeder : FB_DUO_ACTOR   //
+      _oPress : FB_DUO_ACTOR   //
+
+END_VAR
+        ///////////Ab hier kommt der Programm teil
+
+
+//=========================================================
+// +++ INIT +++
+
+//=========================================================
+
+//=========================================================
+// +++ FLAGS & TIMER +++
+
+//=========================================================
+
+//=========================================================
+// +++ INPUTS +++
+	
+//=========================================================
+
+//=========================================================
+// +++ PROGRAMM +++
+	
+//=========================================================
+
+//=========================================================
+// +++ UNITS  INSTANCES +++
+
+        _oFeeder(
+            xEnable                 := xEnable,
+            xManual					:= NOT (Command > 0) AND (ExecState = EN_EXEC_STATE.MANUAL), 
+		    utConfig				:= utConfig.utFeeder, 
+		    xAck					:= xAck, 
+		    xSensIsInBasPos			:= , 
+		    xSensIsInWrkPos			:= , 
+		    xOnManReleaseToBasPos	:= TRUE, 
+		    xOnManReleaseToWrkPos	:= TRUE, 
+		    xGoToBasPos				=> , 
+		    xGoToWrkPos				=> , 
+		    utVisItf				:= utVisItf.utFeeder);
+            
+        _oPress(
+            xEnable                 := xEnable,
+            xManual					:= NOT (Command > 0) AND (ExecState = EN_EXEC_STATE.MANUAL), 
+		    utConfig				:= utConfig.utPress, 
+		    xAck					:= xAck, 
+		    xSensIsInBasPos			:= , 
+		    xSensIsInWrkPos			:= , 
+		    xOnManReleaseToBasPos	:= TRUE, 
+		    xOnManReleaseToWrkPos	:= TRUE, 
+		    xGoToBasPos				=> , 
+		    xGoToWrkPos				=> , 
+		    utVisItf				:= utVisItf.utPress);
+            
+//=========================================================
+
+//=========================================================
+// +++ OUTPUTS +++
+
+//=========================================================
+
+//=========================================================
+// +++ VISU +++
+
+//=========================================================
+
+//=========================================================
+// +++ ALARMS +++
+
+//=========================================================

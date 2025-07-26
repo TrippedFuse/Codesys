@@ -1,0 +1,22 @@
+
+        // FIRST THE CONFIG STRUCTs
+    TYPE ST_CONF_ROBOT :
+    STRUCT
+        //NAME              TYPE                INIT                                COMMENT
+        sName               : STRING(10);
+          utLifter  : ST_CONF_DUO_ACTOR;
+      utTurner  : ST_CONF_DUO_ACTOR;
+      utGripper  : ST_CONF_DUO_ACTOR;
+
+    END_STRUCT
+    END_TYPE
+        // THEN THE VIS STRUCTs
+    TYPE ST_VIS_ROBOT :
+    STRUCT
+        //NAME              TYPE                INIT                                COMMENT
+          utLifter  : ST_VIS_DUO_ACTOR;
+      utTurner  : ST_VIS_DUO_ACTOR;
+      utGripper  : ST_VIS_DUO_ACTOR;
+
+    END_STRUCT
+    END_TYPE// THEN THE ENUMS
