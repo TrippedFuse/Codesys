@@ -18,7 +18,7 @@ if __name__ == "__main__":
 
     #config paths 
     genFileFolder   = 'generated'
-    pathSign        = '/'   # / for linux \ for Windows
+    pathSign        = '\\'   # / for linux \ for Windows
 
     # --------------------------------------------------------------------------- #
     # Open and load the Json Configuration File
@@ -87,27 +87,27 @@ if __name__ == "__main__":
             pouString = helper.createPouHeader("FB", module["name"], today)
         # Var_In_Out Area
         pouString += f"""
-    VAR_IN_OUT
-        //NAME              TYPE                INIT                                COMMENT
-        utVisItf : {helper.createModuleName('ST_VIS', module["name"])};
-    END_VAR\n"""
+VAR_IN_OUT
+    //NAME              TYPE                INIT                                COMMENT
+    utVisItf : {helper.createModuleName('ST_VIS', module["name"])};
+END_VAR\n"""
         # Var Area
         pouString += f"""
-    VAR
-        //NAME              TYPE                INIT                                COMMENT
-        // locals 
-    """
+VAR
+    //NAME              TYPE                INIT                                COMMENT
+    // locals 
+"""
         if module["is_sqc"] == True: 
             pouString += """
-        // sequence handler
-    """
+    // sequence handler
+"""
             for sqc in module["sqc"]:
                 pouString += helper.createDeklarationName("      _oSqc", sqc["name"]) + " : FB_SQC_HANDLER;    //" + sqc["comment"] + "\n"
 
         pouString += "\n     // units\n"
 
         for unit in module["units"]:
-            pouString += helper.createDeklarationName("      _o", unit["name"]) + " : " + unit["type"] + "   //\n"
+            pouString += helper.createDeklarationName("      _o", unit["name"]) + " : " + unit["type"] + ";   //\n"
 
         pouString += """\nEND_VAR
         ///////////Ab hier kommt der Programm teil\n\n"""
@@ -146,32 +146,32 @@ if __name__ == "__main__":
         # ------------  
         dutString = f"""
         // FIRST THE CONFIG STRUCTs
-    TYPE {helper.createModuleName("ST_CONF", module["name"])} :
-    STRUCT
-        //NAME              TYPE                INIT                                COMMENT
-        sName               : STRING(10);
-    """
+TYPE {helper.createModuleName("ST_CONF", module["name"])} :
+STRUCT
+    //NAME              TYPE                INIT                                COMMENT
+    sName               : STRING(10);
+"""
         for unit in module["units"]:
             dutString += helper.createDeklarationName("      ut", unit["name"]) + "  : ST_CONF_" + unit["type"][3:] + ";\n"
 
         dutString += """
-    END_STRUCT
-    END_TYPE"""
+END_STRUCT
+END_TYPE"""
         # ------------
         # Create ST_VIS
         # ------------  
         dutString += f"""
         // THEN THE VIS STRUCTs
-    TYPE {helper.createModuleName("ST_VIS", module["name"])} :
-    STRUCT
-        //NAME              TYPE                INIT                                COMMENT
-    """
+TYPE {helper.createModuleName("ST_VIS", module["name"])} :
+STRUCT
+    //NAME              TYPE                INIT                                COMMENT
+"""
         for unit in module["units"]:
             dutString += helper.createDeklarationName("      ut", unit["name"]) + "  : ST_VIS_" + unit["type"][3:] + ";\n"
 
         dutString += """
-    END_STRUCT
-    END_TYPE"""
+END_STRUCT
+END_TYPE"""
         # ------------
         # Create SQC ENUMs
         # ------------  
@@ -202,13 +202,14 @@ if __name__ == "__main__":
         if module["is_sqc"] == True: 
             for sqc in module["sqc"]:
                 sqcHanlderName = helper.createDeklarationName("_oSqc", sqc["name"])
-                methodString += f"""// NEUE SCHRITTKETTE +++++++++++
-    CASE {sqcHanlderName} OF
-                """
+                methodString += f"""
+                // NEUE SCHRITTKETTE +++++++++++
+CASE {sqcHanlderName} OF
+"""
                 for step in sqc["steps"]:
                     enumName = f"""{helper.createModuleName("EN", module["name"])}_{sqc["name"].upper()}_STATE"""
                     methodString += f"""   {helper.createStepInSqc(enumName, step["name"].upper(), step["comment"], sqcHanlderName)}
-                    """
+"""
                 methodString += "END_CASE\n\n"
 
         modulfile = open(modulePath+pathSign+"Methods.txt", "x")
